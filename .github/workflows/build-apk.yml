@@ -24,11 +24,10 @@ jobs:
         uses: android-actions/setup-android@v4
 
       - name: Build Debug APK
-        working-directory: NeelpadmoAndroid
         run: |
           sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
-          gradle assembleDebug
+          gradle -p NeelpadmoAndroid assembleDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
